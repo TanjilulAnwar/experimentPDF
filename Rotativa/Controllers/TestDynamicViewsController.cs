@@ -1,7 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Dynamic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Rotativa.Models;
 using Wkhtmltopdf.NetCore;
+
 
 namespace Rotativa.Controllers
 {
@@ -10,18 +14,31 @@ namespace Rotativa.Controllers
     public class TestDynamicViewsController : ControllerBase
     {
         readonly IGeneratePdf _generatePdf;
-        readonly string htmlView = @"@model Rotativa.Models.TestData
+        readonly string htmlView = @"
                         <!DOCTYPE html>
                         <html>
                         <head>
                         </head>
                         <body>
-                            <header>
-                                <h1>@Model.Text</h1>
-                            </header>
-                            <div>
-                                <h2>@Model.Number</h2>
-                            </div>
+<div>
+ <table>
+@{ int i = 1;}
+    @foreach (var p in Model.ListValue)
+    {
+        <tr >
+            <td>@(i++)</td>
+         
+            <td>@p.Text</td>
+          
+            <td>@p.Number</td>
+         
+           
+        </tr>
+    }
+
+</table>
+
+  </div>
                         </body>
                         </html>";
 
@@ -50,16 +67,74 @@ namespace Rotativa.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("GetByRazorText")]
+        [Route("LL")]
         public async Task<IActionResult> GetByRazorText()
         {
+            var kv = new Dictionary<string, string>
+            {
+                { "username", "Veaer" },
+                { "age", "20" },
+                { "url", "google.com" }
+            };
+
+            var options = new ConvertOptions
+            {
+                HeaderHtml = "https://localhost:5002/header.html",
+                PageOrientation = Wkhtmltopdf.NetCore.Options.Orientation.Portrait,
+                FooterHtml = "https://localhost:5002/footer.html",
+                Replacements = kv,
+                PageMargins = new Wkhtmltopdf.NetCore.Options.Margins()
+                {
+                    Top = 15,
+                    Left = 10,
+                    Right = 10,
+                    Bottom = 15
+                }
+
+            };
+            _generatePdf.SetConvertOptions(options);
             var data = new TestData
             {
-                Text = "This is not a test",
+                Text = "Tanjilul Anwar",
                 Number = 12345678
             };
 
-            return await _generatePdf.GetPdfViewInHtml(htmlView, data);
+            List<TestData> f = new List<TestData>();
+            f.Add(new TestData
+            {
+                Text = "Tanjilul Anwar",
+                Number = 12345678
+            });
+            f.Add(new TestData
+            {
+                Text = "Jakequ Sivan",
+                Number = 98600
+            });
+
+            for(int i=0; i<30; i++) {
+                f.Add(new TestData
+                {
+                    Text = "Pitaki Behkore",
+                    Number = 5436
+                });
+            }
+            
+            var list = f;
+            decimal totBalance = 10.0M;
+            var model = ToExpando(new { ListValue = list, Balance = totBalance });
+            string htmlViewX = await System.IO.File.ReadAllTextAsync("Views/dirty.cshtml");
+
+             return await _generatePdf.GetPdfViewInHtml(htmlViewX, model);
+        
+        }
+
+        public ExpandoObject ToExpando(object anonymousObject)
+        {
+            IDictionary<string, object> anonymousDictionary = new RouteValueDictionary(anonymousObject);
+            IDictionary<string, object> expando = new ExpandoObject();
+            foreach (var item in anonymousDictionary)
+                expando.Add(item);
+            return (ExpandoObject)expando;
         }
 
         /// <summary>
@@ -100,7 +175,8 @@ namespace Rotativa.Controllers
 
             if(!_generatePdf.ExistsView("notAView"))
             {
-                var html = await System.IO.File.ReadAllTextAsync("Views/Test.cshtml");
+                //var html = await System.IO.File.ReadAllTextAsync("Views/Test.cshtml");
+                var html = await System.IO.File.ReadAllTextAsync("Views/invoice.cshtml");
                 _generatePdf.AddView("notAView", html);
             }
 

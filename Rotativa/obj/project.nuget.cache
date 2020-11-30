@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KtR0p6UaTd+NDBkZLVkM+zY/X75cji7WRnDoaiPmQKzy0sRKL7VtYG8BPcg/56n6YbWFz91xMu6VSIJuGJ+b2g==",
+  "dgSpecHash": "rQ3HEzM3mlarv4GtyUlV31xXpY4TVXT4Vk7iSGuRajEE4FB2P+yJfjRNieqFSjsZh6OFfjRRNj+gow1XCBFV4w==",
   "success": true,
-  "projectFilePath": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\Rotativa.csproj",
+  "projectFilePath": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master_edit\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\Rotativa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NICE\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.0.0\\microsoft.aspnetcore.mvc.razor.extensions.3.0.0.nupkg.sha512",
     "C:\\Users\\NICE\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.0.0\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.0.0.nupkg.sha512",

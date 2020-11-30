@@ -183,8 +183,10 @@ namespace Rotativa.Controllers
             {
                 PageMargins = new Wkhtmltopdf.NetCore.Options.Margins()
                 {
-                    Left = 0,
-                    Right = 0
+                    Top = 20,
+                    Left = 20,
+                    Right = 20,
+                    Bottom = 20
                 }
             };
 
@@ -194,6 +196,7 @@ namespace Rotativa.Controllers
             {
                 Text = "This is a test",
                 Number = 123456
+                
             };
 
             var pdf = await _generatePdf.GetByteArray("Views/Test.cshtml", data);

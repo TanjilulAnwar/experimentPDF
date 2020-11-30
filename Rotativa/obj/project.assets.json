@@ -1708,11 +1708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\Rotativa.csproj",
+      "projectUniqueName": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master_edit\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\Rotativa.csproj",
       "projectName": "Rotativa",
-      "projectPath": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\Rotativa.csproj",
+      "projectPath": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master_edit\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\Rotativa.csproj",
       "packagesPath": "C:\\Users\\NICE\\.nuget\\packages\\",
-      "outputPath": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\obj\\",
+      "outputPath": "D:\\MY STUFF\\htmltopdf\\Wkhtmltopdf.NetCore.Example-master_edit\\Wkhtmltopdf.NetCore.Example-master\\Rotativa\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NICE\\AppData\\Roaming\\NuGet\\NuGet.Config",
